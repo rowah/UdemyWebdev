@@ -13,9 +13,10 @@ if(userInput === 'new') {
         console.log(`${index} : ${item}`)
     })
 } else if(userInput === 'delete') {
-    userInput = prompt('Enter the index of the todo to delete')
+    //handling invalid inputs 
+    const index = Number(prompt('Enter the index of the todo to delete'));
     //using splice method to remove the element at the keyed in index
-    toDoList.splice(userInput, 1)
+    toDoList.splice(index, 1)
 }
     userInput = prompt('What would you like to do?')
 }
