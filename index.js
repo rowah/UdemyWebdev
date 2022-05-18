@@ -1,6 +1,6 @@
 //getting input from the user
 let userInput = prompt('What would you like to do?')
-const toDoList = ['Kill a rat', 'Watch soccer', 'Code Yweri'];
+const toDoList = [];
 //ensuring that the games quits only when the word quit is keyed in
 while(userInput !== 'quit' && userInput !== 'q') {
     ///the todo list 
@@ -10,10 +10,11 @@ if(userInput === 'new') {
 } else if (userInput === 'list') {
     //list the todos
     toDoList.forEach( (item, index) => {
-        console.log(`index: item`)
+        console.log(`${index} : ${item}`)
     })
 } else if(userInput === 'delete') {
     userInput = prompt('Enter the index of the todo to delete')
+    //using splice method to remove the element at the keyed in index
     toDoList.splice(userInput, 1)
 }
     userInput = prompt('What would you like to do?')
