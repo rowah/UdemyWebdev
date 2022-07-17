@@ -1,6 +1,5 @@
-const { Console } = require("console");
 const express = require("express");
-const { default: mongoose, mongo } = require("mongoose");
+const mongoose = require("mongoose");
 const app = express(); //result of executing express
 const PORT = process.env.PORT || 3000;
 const path = require("path");
