@@ -4,8 +4,11 @@ const app = express(); //result of executing express
 const PORT = process.env.PORT || 3000;
 const path = require("path");
 
+//requires our model
+const Product = require("./models/product");
+
 mongoose
-  .connect(`mongodb://localhost:27017/dog`, {
+  .connect(`mongodb://localhost:27017/farmStand`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

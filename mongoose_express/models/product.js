@@ -14,6 +14,13 @@ const productSchema = new mongoose.Schema({
   },
   category: {
     type: String,
+    lowercase: true,
     enum: ["fruit", "vegetable", "dairy"],
   },
 });
+
+//product compilation
+const Product = mongoose.model("Product", productSchema);
+
+//exports product module
+module.exports = Product;
