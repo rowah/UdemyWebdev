@@ -23,8 +23,12 @@ mongoose
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.get("/dog", (req, res) => {
-  console.log(`WOOF!`);
+//defines actual routes to querries mongo db
+app.get("/products", async (req, res) => {
+  //querrying product model
+  const products = await Product.find({});
+  console.log(products);
+  console.log(`Here are all the products!`);
 });
 
 app.listen(PORT, () => {
