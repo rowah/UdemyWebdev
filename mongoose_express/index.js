@@ -31,6 +31,7 @@ app.get("/products", async (req, res) => {
   console.log(products);
   //we then render the index.ejs file instead of sending text
   //res.send(`ALL THE PRODUCTS`);
+  //as a second argument we pass through all the products
   res.render("products/index");
 });
 
