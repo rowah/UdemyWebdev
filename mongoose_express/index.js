@@ -35,6 +35,14 @@ app.get("/products", async (req, res) => {
   res.render("products/index", { products });
 });
 
+//creating route that views details about a single product
+app.get("/products/:id", async (req, res) => {
+  const { id } = req.params;
+  const product = await Product.findById(id);
+  console.log(product);
+  res.send(`Oyaa!`);
+});
+
 app.listen(PORT, () => {
   console.log(`APP IS LISTENING ON PORT ${PORT}. CHECK IT OUT!`);
 });
