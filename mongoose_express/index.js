@@ -26,9 +26,12 @@ app.set("view engine", "ejs");
 //defines actual routes to querries mongo db
 app.get("/products", async (req, res) => {
   //querrying product model
+  //we await some mongoose operation all the time
   const products = await Product.find({});
   console.log(products);
-  console.log(`Here are all the products!`);
+  //we then render the index.ejs file instead of sending text
+  //res.send(`ALL THE PRODUCTS`);
+  res.render("products/index");
 });
 
 app.listen(PORT, () => {
