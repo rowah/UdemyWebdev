@@ -32,7 +32,7 @@ app.get("/products", async (req, res) => {
   //we then render the index.ejs file instead of sending text
   //res.send(`ALL THE PRODUCTS`);
   //as a second argument we pass through all the products
-  res.render("products/index");
+  res.render("products/index", { products });
 });
 
 app.listen(PORT, () => {
