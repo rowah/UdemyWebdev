@@ -34,6 +34,10 @@ app.get("/products", async (req, res) => {
   //as a second argument we pass through all the products
   res.render("products/index", { products });
 });
+//route servers up the form and creates a new product
+app.get("/products/new", (req, res) => {
+  res.render("products/new");
+});
 
 //creating route that views details about a single product
 app.get("/products/:id", async (req, res) => {
