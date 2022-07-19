@@ -22,6 +22,8 @@ mongoose
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+//tells express to use middleware to get info from post request body
+app.use(express.urlencoded({ extendend: true }));
 
 //defines actual routes to querries mongo db
 app.get("/products", async (req, res) => {
@@ -37,6 +39,18 @@ app.get("/products", async (req, res) => {
 //route servers up the form and creates a new product
 app.get("/products/new", (req, res) => {
   res.render("products/new");
+});
+
+//route for submitting form
+app.post("/products", async (req, res) => {
+  //making an actual product by passing through req.body straight from the request
+  const newProduct = new Product(req.body);
+  await newProduct.save();
+  //redirecting the route
+  res.redirect(`/products/${newProduct._id}`);
+  //   console.log(newProduct);
+  //   //console.log(req.body);
+  //   res.send(`Product in the making!!`);
 });
 
 //creating route that views details about a single product
