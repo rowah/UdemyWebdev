@@ -61,6 +61,12 @@ app.get("/products/:id", async (req, res) => {
   res.render("products/show", { product });
 });
 
+//editing route with id(dets product to be editted)
+app.get("/products/:id/edit", async (req, res) => {
+  const product = await Product.findById(id);
+  res.render("products/edit", { product });
+});
+
 app.listen(PORT, () => {
   console.log(`APP IS LISTENING ON PORT ${PORT}. CHECK IT OUT!`);
 });
