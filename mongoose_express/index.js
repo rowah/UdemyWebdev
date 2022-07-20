@@ -26,6 +26,8 @@ app.set("view engine", "ejs");
 //tells express to use middleware to get info from post request body
 app.use(express.urlencoded({ extendend: true }));
 app.use(methodOverride("_method"));
+
+// const categories = ["fruit", "vegetable", "dairy"];
 //defines actual routes to querries mongo db
 app.get("/products", async (req, res) => {
   //querrying product model
