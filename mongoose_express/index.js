@@ -82,6 +82,14 @@ app.put("/products/:id", async (req, res) => {
   res.redirect(`/products/${product._id}`);
 });
 
+//setting up a delete route
+app.delete("/products/:id", async (req, res) => {
+  //extract id from the item on the db and use it to delete the item using the findByIdAndDelete method
+  const { id } = req.params;
+  const product = await Product.findByIdAndDelete(id);
+  res.redirect("/products");
+});
+
 app.listen(PORT, () => {
   console.log(`APP IS LISTENING ON PORT ${PORT}. CHECK IT OUT!`);
 });
