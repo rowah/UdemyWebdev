@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const app = express(); //result of executing express
 const PORT = process.env.PORT || 3000;
 const path = require("path");
+const methodOverride = require("method-override");
 
 //requires our model
 const Product = require("./models/product");
@@ -24,7 +25,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 //tells express to use middleware to get info from post request body
 app.use(express.urlencoded({ extendend: true }));
-
+app.use(methodOverride("_method"));
 //defines actual routes to querries mongo db
 app.get("/products", async (req, res) => {
   //querrying product model
@@ -66,6 +67,12 @@ app.get("/products/:id/edit", async (req, res) => {
   const { id } = req.params;
   const product = await Product.findById(id);
   res.render("products/edit", { product });
+});
+
+//creating an end point to submit to (put(replacing), patch(replacing a portion))
+app.put("/product/:id", async (req, res) => {
+  console.log(req.body);
+  res.send(`PUT!`);
 });
 
 app.listen(PORT, () => {
